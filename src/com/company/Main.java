@@ -20,18 +20,20 @@ public class Main {
 
         try{
             String fileName =  JOptionPane.showInputDialog("Enter The File Name");
-            File f = new File(fileName);
+            File f = new File(fileName + ".txt");
             Scanner s  = new Scanner(f);
 
             for(int i = 0;i<MAXDATA;i++){
                 if(s.hasNextInt()){
                     calcSDev.addNewDataItem(s.nextInt());
-
                 } else {
-
+                    break;
                 }
             }
             s.close();
+
+            System.out.println("AVERAGE: " + calcSDev.calcAverage());
+            System.out.println("VARIANCE: " + calcSDev.calcVariance());
 
         }catch(Exception e){
             System.out.println(error);

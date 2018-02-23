@@ -25,6 +25,12 @@ public class StDeviation {
     //
     private int[] Data = new int[MAXDATA];
     private int i  = 0;
+    private int sum;
+    private int average;
+    private int StDeviation;
+    private double[] aVariance = new double[MAXDATA];
+    private double sumVariance;
+    private double variance;
 
 
 
@@ -35,9 +41,9 @@ public class StDeviation {
     // You MUST write this method and I will use it during testing
     //
     public void addNewDataItem(int dataItem) {
-
         Data[i] = dataItem;
         i++;
+        System.out.println(dataItem);
     }
 
     // ---------*---------*---------*---------*---------*---------*---------*---------*
@@ -46,9 +52,7 @@ public class StDeviation {
     // You MUST write this method and I will use it during testing
     //
     public int getNumberOfDataItems() {
-
-        // temporary value
-        return INVALID;
+        return i;
     }
 
     // ---------*---------*---------*---------*---------*---------*---------*---------*
@@ -58,10 +62,14 @@ public class StDeviation {
     // You MUST write this method and I will use it during testing
     //
     public double calcAverage() {
-
-        // temporary value
-        return INVALID;
+        average = 0;
+        for(int x = 0; x < i;x++){
+           sum+=Data[x];
+        }
+        average = sum/i;
+        return average;
     }
+
 
     // ---------*---------*---------*---------*---------*---------*---------*---------*
     // The following method returns a double precision value which is the Variance of all
@@ -71,8 +79,16 @@ public class StDeviation {
     //
     public double calcVariance() {
 
-        // temporary value
-        return INVALID;
+        for(int y = 0; y<i; y++){
+            aVariance[y] = (Data[y] - calcAverage())*(Data[y]- calcAverage());
+            System.out.println(aVariance[y]);
+        }
+        for(int z = 0; z < i; z++){
+           sumVariance += aVariance[z];
+        }
+         variance = sumVariance/i;
+
+        return variance;
     }
 }
 
