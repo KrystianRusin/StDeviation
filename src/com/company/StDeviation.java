@@ -5,6 +5,7 @@ package com.company;
 // I have only ever used this technique for the project wide constants.
 //
 import static com.company.ProjConstants.*;
+import java.math.*;
 
 /**
  * Created by Robert Hubert on 21/02/2018.
@@ -27,7 +28,7 @@ public class StDeviation {
     private int i  = 0;
     private int sum;
     private int average;
-    private int StDeviation;
+    private double StDeviation;
     private double[] aVariance = new double[MAXDATA];
     private double sumVariance;
     private double variance;
@@ -43,7 +44,6 @@ public class StDeviation {
     public void addNewDataItem(int dataItem) {
         Data[i] = dataItem;
         i++;
-        System.out.println(dataItem);
     }
 
     // ---------*---------*---------*---------*---------*---------*---------*---------*
@@ -62,11 +62,16 @@ public class StDeviation {
     // You MUST write this method and I will use it during testing
     //
     public double calcAverage() {
-        average = 0;
+        sum = 0;
+
         for(int x = 0; x < i;x++){
+
            sum+=Data[x];
+
         }
+
         average = sum/i;
+
         return average;
     }
 
@@ -78,11 +83,13 @@ public class StDeviation {
     // You MUST write this method and I will use it during testing
     //
     public double calcVariance() {
+        variance = 0;
+        sumVariance = 0;
 
         for(int y = 0; y<i; y++){
             aVariance[y] = (Data[y] - calcAverage())*(Data[y]- calcAverage());
-            System.out.println(aVariance[y]);
         }
+
         for(int z = 0; z < i; z++){
            sumVariance += aVariance[z];
         }
@@ -90,5 +97,27 @@ public class StDeviation {
 
         return variance;
     }
+
+    // ---------*---------*---------*---------*---------*---------*---------*---------*
+    // The following method returns a double precision value which is the Standard
+    // Deviation of all of the data values
+    //
+    // You MUST write this method and I will use it during testing
+    //
+
+    public String print(){
+        String range = "68% of the data falls in between " + (calcAverage() - StDeviation) + " and " + (calcAverage() + StDeviation) + "\n" +
+        "95% of the data falls in between " + (calcAverage() - (2*StDeviation)) + " and " + (calcAverage() + (2*StDeviation)) + "\n" +
+        "99% of the data falls in between " + (calcAverage() - (3*StDeviation)) + " and " + (calcAverage() + (3*StDeviation));
+        return range;
+    }
+
+    public double calcStandardDeviation(){
+        StDeviation = Math.sqrt(calcVariance());
+        System.out.println(print());
+
+        return StDeviation;
+    }
+
 }
 

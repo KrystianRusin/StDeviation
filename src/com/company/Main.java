@@ -34,6 +34,7 @@ public class Main {
 
             System.out.println("AVERAGE: " + calcSDev.calcAverage());
             System.out.println("VARIANCE: " + calcSDev.calcVariance());
+            System.out.println("STANDARD DEVIATION: " + calcSDev.calcStandardDeviation());
 
         }catch(Exception e){
             System.out.println(error);
