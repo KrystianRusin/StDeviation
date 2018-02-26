@@ -33,6 +33,13 @@ public class StDeviation {
     private double sumVariance;
     private double variance;
 
+    public String KeepOut(){
+            String range = "68% of the data falls in between " + (calcAverage() - StDeviation) + " and " + (calcAverage() + StDeviation) + "\n" +
+                    "95% of the data falls in between " + (calcAverage() - (2 * StDeviation)) + " and " + (calcAverage() + (2 * StDeviation)) + "\n" +
+                    "99% of the data falls in between " + (calcAverage() - (3 * StDeviation)) + " and " + (calcAverage() + (3 * StDeviation));
+            return range;
+    }
+
 
 
     // ---------*---------*---------*---------*---------*---------*---------*---------*
@@ -105,16 +112,9 @@ public class StDeviation {
     // You MUST write this method and I will use it during testing
     //
 
-    public String print(){
-        String range = "68% of the data falls in between " + (calcAverage() - StDeviation) + " and " + (calcAverage() + StDeviation) + "\n" +
-        "95% of the data falls in between " + (calcAverage() - (2*StDeviation)) + " and " + (calcAverage() + (2*StDeviation)) + "\n" +
-        "99% of the data falls in between " + (calcAverage() - (3*StDeviation)) + " and " + (calcAverage() + (3*StDeviation));
-        return range;
-    }
-
     public double calcStandardDeviation(){
         StDeviation = Math.sqrt(calcVariance());
-        System.out.println(print());
+        System.out.println(KeepOut());
 
         return StDeviation;
     }
