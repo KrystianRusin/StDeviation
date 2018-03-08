@@ -16,10 +16,11 @@ public class Main {
         // Create a new object from the StDeviation Class
         //
         StDeviation calcSDev =  new StDeviation();
-        String error = "You made an oops";
+        String error = " FIX IT ";
 
         try{
             String fileName =  JOptionPane.showInputDialog("Enter The File Name");
+            int precision = Integer.parseInt(JOptionPane.showInputDialog("Enter Precison"));
             File f = new File(fileName + ".txt");
             Scanner s  = new Scanner(f);
 
@@ -31,14 +32,24 @@ public class Main {
                 }
             }
             s.close();
-
-            System.out.println("AVERAGE: " + calcSDev.calcAverage());
-            System.out.println("VARIANCE: " + calcSDev.calcVariance());
-            System.out.println("STANDARD DEVIATION: " + calcSDev.calcStandardDeviation());
+            calcSDev.calcVarianceF();
+           /* System.out.printf("MEAN %." +precision + "f\n", calcSDev.calcAverage());
+            System.out.printf("VARIANCE %." + precision + "f\n", calcSDev.calcVariance());
+            System.out.printf("VARIANCE WITH FREQUENCY: %."+precision + "f\n", calcSDev.calcVarianceF());
+            System.out.printf("STANDARD DEVIATION %." + precision + "f\n", calcSDev.calcStandardDeviation());
+            System.out.printf("68 percent of the data falls between %." + precision + "f", calcSDev.calcAverage() - calcSDev.calcStandardDeviation());
+            System.out.printf(" and %." + precision + "f\n", calcSDev.calcAverage() + calcSDev.calcStandardDeviation());
+            System.out.printf("95 percent of the data falls between %."+precision+"f" , calcSDev.calcAverage() - (calcSDev.calcStandardDeviation()*2));
+            System.out.printf(" and %." + precision + "f\n",calcSDev.calcAverage() + (calcSDev.calcStandardDeviation()*2));
+            System.out.printf("99 percent of the data falls between %."+precision+"f" , calcSDev.calcAverage() - (calcSDev.calcStandardDeviation()*3));
+            System.out.printf(" and %." + precision + "f",calcSDev.calcAverage() + (calcSDev.calcStandardDeviation()*3));
+*/
 
         }catch(Exception e){
             System.out.println(error);
             e.printStackTrace();
+
+
         }
 
     }
