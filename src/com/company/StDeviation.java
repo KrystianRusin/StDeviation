@@ -55,32 +55,39 @@ public class StDeviation {
 
     public double calcVarianceF(){
         double variance = 0;
+        int variable[] = new int[MAXDATA];
+        double fVariance[] = new double[MAXDATA];
         double sumVariance = 0;
         int frequency;
-        int currentNumber;
+        int cNum;
         boolean occured = false;
-        
+
+
+        for(int l = 0; l<counter;l++){
+            variable[l] = INVALID;
+        }
         for(int k = 0; k <counter; k++){
-            currentNumber = Data[k];
             frequency = 0;
+            cNum = Data[k];
             for (int j = 0; j <counter;j++){
                 occured = false;
-                if(currentNumber == Data[j]){
+                if(cNum == variable[j]){
                     occured = true;
                     break;
                 }
             }
             for(int h = 0; h<counter; h++){
-                if(!occured&&currentNumber==Data[h]){
+                if(!occured&&cNum==Data[h]){
                     frequency++;
                 }
+                variable[k] = cNum;
             }
-            System.out.println(currentNumber + ": "+ frequency);
-            System.out.println("");
-            Data[k] = currentNumber;
+
+            fVariance[k] = ((Data[k] - calcAverage())*(Data[k]- calcAverage()))*frequency;
+            System.out.println(fVariance[k]);
+            variance += fVariance[k];
+            variance = variance/counter;
         }
-
-
       return variance;
     }
 

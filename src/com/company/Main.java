@@ -32,7 +32,7 @@ public class Main {
                 }
             }
             s.close();
-            calcSDev.calcVarianceF();
+            System.out.printf("VARIANCE F %." +precision + "f\n", calcSDev.calcVarianceF());
            /* System.out.printf("MEAN %." +precision + "f\n", calcSDev.calcAverage());
             System.out.printf("VARIANCE %." + precision + "f\n", calcSDev.calcVariance());
             System.out.printf("VARIANCE WITH FREQUENCY: %."+precision + "f\n", calcSDev.calcVarianceF());
